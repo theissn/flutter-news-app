@@ -4,7 +4,7 @@ News Application
 
 ## Visual
 
-![home page screenshot](/home-screen.png)
+![home page screenshot](/home-screen.jpg)
 
 ## Getting Started
 
