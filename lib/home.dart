@@ -1,3 +1,4 @@
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'package:http/http.dart' as http;
 import 'package:flutter/material.dart';
 import 'dart:convert';
@@ -11,8 +12,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
-
 
   @override
   Widget build(BuildContext context) {
@@ -38,18 +37,17 @@ class _HomePageState extends State<HomePage> {
 
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("Home Page"),
+        title: new Text("News"),
       ),
       body: futureBuilder,
     );
   }
 
   Future<List<News>> _getData() async {
-    List<News> initialNews;
-
-
-
-    http.Response res = await http.get('https://newsapi.org/v2/top-headlines?country=gb&apiKey=2bdc18ea3e9b4fd690b1e1a98c3630a8');
+    final String apiKey = DotEnv().env['API_KEY'];
+    http.Response res = await http.get(
+        'https://newsapi.org/v2/top-headlines?country=gb&apiKey=$apiKey'
+    );
 
     final resJson = json.decode(res.body);
 

@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_dotenv/flutter_dotenv.dart';
 import 'home.dart';
 
-void main() => runApp(MyApp());
+//void main() => runApp(MyApp());
 
-// 2bdc18ea3e9b4fd690b1e1a98c3630a8
-// https://newsapi.org/v2/top-headlines?country=us&category=business&apiKey=2bdc18ea3e9b4fd690b1e1a98c3630a8
+Future main() async {
+  await DotEnv().load('.env');
+  runApp(MyApp());
+}
 
 class MyApp extends StatelessWidget {
   // This widget is the root of your application.
