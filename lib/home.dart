@@ -28,7 +28,9 @@ class _HomePageState extends State<HomePage> {
             );
           default:
             if (snapshot.hasError)
-              return new Text('Error: ${snapshot.error}');
+              return Center(
+                child: Text('Error.. Please try closing and re-opening the app'),
+              );
             else
               return createListView(context, snapshot);
         }
@@ -37,7 +39,10 @@ class _HomePageState extends State<HomePage> {
 
     return new Scaffold(
       appBar: new AppBar(
-        title: new Text("News"),
+        title: new Text(
+          "News Page",
+          style: TextStyle(color: Colors.white),
+        ),
       ),
       body: futureBuilder,
     );

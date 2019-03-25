@@ -12,9 +12,7 @@ class NewsCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-
       onTap: _launchURL,
-
       child: Card(
         child: Column(
           children: <Widget>[
@@ -48,7 +46,6 @@ class NewsCard extends StatelessWidget {
           ],
         ),
       ),
-
     );
   }
 
