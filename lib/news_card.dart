@@ -15,7 +15,8 @@ class NewsCard extends StatelessWidget {
       child: Column(
         children: <Widget>[
           Image.network(
-            news.urlToImage
+            news.urlToImage,
+            fit: BoxFit.cover,
           ),
           Text(
             news.title,
@@ -26,7 +27,7 @@ class NewsCard extends StatelessWidget {
             news.description
           ),
           Text(
-            news.publishedAt,
+            "Published At: ${news.publishedAt}",
           ),
           FlatButton(
             child: Text('Open Article'),
