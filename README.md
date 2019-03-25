@@ -1,6 +1,10 @@
-# news_app
+# News App
 
 News Application
+
+## Visual
+
+![home page screenshot](/home-screen.png)
 
 ## Getting Started
 
