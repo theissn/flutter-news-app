@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:url_launcher/url_launcher.dart';
-
+import 'package:intl/intl.dart';
 import 'news_model.dart';
 
 class NewsCard extends StatelessWidget {
@@ -11,31 +11,54 @@ class NewsCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      child: Column(
-        children: <Widget>[
-          Image.network(
-            news.urlToImage,
-            fit: BoxFit.cover,
-          ),
-          Text(
-            news.title,
-            style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 2.0),
-            textAlign: TextAlign.left,
-          ),
-          Text(
-            news.description
-          ),
-          Text(
-            "Published At: ${news.publishedAt}",
-          ),
-          FlatButton(
-            child: Text('Open Article'),
-            onPressed: _launchURL,
-          )
-        ],
+    return GestureDetector(
+
+      onTap: _launchURL,
+
+      child: Card(
+        child: Column(
+          children: <Widget>[
+            Image.network(
+              news.urlToImage,
+              fit: BoxFit.cover,
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                news.title,
+                style: DefaultTextStyle.of(context).style.apply(fontSizeFactor: 1.25),
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Text(
+                  news.description
+              ),
+            ),
+            Padding(
+              padding: const EdgeInsets.all(8.0),
+              child: Text(
+                "Published: ${_formatDate()}",
+              ),
+            ),
+            FlatButton(
+              child: Text('Open Article'),
+              onPressed: _launchURL,
+            )
+          ],
+        ),
       ),
+
     );
+  }
+
+  _formatDate() {
+    final String dateString = this.news.publishedAt;
+
+    final DateTime date = DateTime.parse(dateString);
+    final DateFormat formatter = DateFormat('E d LLL - H:m');
+
+    return formatter.format(date);
   }
 
   _launchURL() async {
